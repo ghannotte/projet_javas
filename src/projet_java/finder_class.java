@@ -1,6 +1,7 @@
 package projet_java;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class finder_class implements import_all {
@@ -13,15 +14,26 @@ public class finder_class implements import_all {
 		 for (int i = 0; i < targets.size(); i++) {
 			 
 			 
-			 Object b = targets.get(1);
+			 Object b = targets.get(i);
 			 String c=b.toString(); 
 			 List a = import_csv.creat(c);
-			 imports.addAll(a);
+			 imports.add(a);
 		    }
-		 
 		 
 		 
 		 return imports;
 	 }
 	
+	 public static String[] split(Object entry){
+		 
+		 
+		 String b =entry.toString();
+		 
+			String[] c = b.split(",");
+			
+			return c;
+			
+	 }
+	 
+	 
 }

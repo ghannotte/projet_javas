@@ -21,18 +21,17 @@ public interface import_csv{
 	       String file = path;
 	       String delimiter = ",";
 	       String line;
+	    
 	       List lines = new ArrayList();
 	        try (BufferedReader br =
 	                     new BufferedReader(new FileReader(file))) {
 	            while((line = br.readLine()) != null){
-	                List values = Arrays.asList(line.split(delimiter));
-	                lines.add(values);
+	                lines = Arrays.asList(line.split(delimiter));	                
 	            }
 	            
 	        } catch (Exception e){
 	            System.out.println(e);
 	        }
-	        
 	        return lines;
 	    }
 	   
