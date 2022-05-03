@@ -10,17 +10,19 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
-public class db extends init_database{
+public class db extends init_database implements import_all{
 	
-	static final String uri = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useSSL=false";
 	
 	 public static void  insert(String[] dbname) {
-		 
-		 
-				 String query1 = "INSERT INTO InsertDemo " + "VALUES ("+dbname[0]+","+"'"+dbname[1]+"'"+","+"'"+dbname[2]+"'"+","+"'"+dbname[3]+"'"+","+"'"+dbname[4]+"'"+","+"'"+dbname[5]+"'"+","+dbname[6]+","+dbname[6]+","+dbname[8]+")";
-				 System.out.println(query1.replaceAll("[\\[\\]]", ""));
+		         List u =import_csv.creat("dbconfig.csv");
+		         String uri = "jdbc:mysql://localhost:3306/"+u.get(0)+"?serverTimezone=UTC&useSSL=false";
+				 String query1 = "INSERT INTO assure " + "VALUES ("+dbname[0]+","+"'"+dbname[1]+"'"+","+"'"+dbname[2]+"'"+","+"'"+dbname[3]+"'"+","+"'"+dbname[4]+"'"+","+"'"+dbname[5]+"'"+","+dbname[6]+","+dbname[6]+","+dbname[8]+")";
+				 String users= u.get(1).toString();
+				 String mdps= u.get(2).toString();
+
 				 
-				 try(Connection conn = DriverManager.getConnection(uri,user, mdp);
+				 
+				 try(Connection conn = DriverManager.getConnection(uri,users, mdps);
 				         Statement stmt = conn.createStatement();
 				      ) {		      
 				         stmt.executeUpdate(query1.replaceAll("[\\[\\]]", ""));  	  

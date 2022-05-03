@@ -31,10 +31,6 @@ public class main {
 				
 				
 			}
-			
-			
-			
-
 		}
 	    else if(choix == 2){
 	    	Scanner myObjs = new Scanner(System.in);
