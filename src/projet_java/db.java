@@ -15,14 +15,14 @@ public class db extends init_database implements import_all{
 	
 	 public static void  insert(String[] dbname) {
 		         List u =import_csv.creat("dbconfig.csv");
-		         String uri = "jdbc:mysql://localhost:3306/"+u.get(0)+"?serverTimezone=UTC&useSSL=false";
-				 String query1 = "INSERT INTO assure " + "VALUES ("+dbname[0]+","+"'"+dbname[1]+"'"+","+"'"+dbname[2]+"'"+","+"'"+dbname[3]+"'"+","+"'"+dbname[4]+"'"+","+"'"+dbname[5]+"'"+","+dbname[6]+","+dbname[6]+","+dbname[8]+")";
-				 String users= u.get(1).toString();
-				 String mdps= u.get(2).toString();
-
+		         String[] a=finder_class.split(u);
+		         String uri = "jdbc:mysql://localhost:3306/"+a[0].replaceAll("[\\[\\]]", "")+"?serverTimezone=UTC&useSSL=false";
+				 String query1 = "INSERT INTO assure " + "VALUES ("+dbname[0]+","+"'"+dbname[1]+"'"+","+"'"+dbname[2]+"'"+","+"'"+dbname[3]+"'"+","+"'"+dbname[4]+"'"+","+"'"+dbname[5]+"'"+","+dbname[6]+","+dbname[7]+","+dbname[8]+")";
+				 String users= a[1].toString();
+				 String mdps= a[2].toString();
 				 
 				 
-				 try(Connection conn = DriverManager.getConnection(uri,users, mdps);
+				 try(Connection conn = DriverManager.getConnection(uri,users.replaceAll("[\\[\\]]", ""), mdps.replaceAll("[\\[\\]]", ""));
 				         Statement stmt = conn.createStatement();
 				      ) {		      
 				         stmt.executeUpdate(query1.replaceAll("[\\[\\]]", ""));  	  

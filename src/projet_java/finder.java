@@ -32,7 +32,7 @@ public interface finder {
 	            e.printStackTrace();
 	        }
 	        
-	        System.out.println(files);
+	        
 		   return files;
 		 }
 }

@@ -26,16 +26,17 @@ public interface import_csv{
 	        try (BufferedReader br =
 	                     new BufferedReader(new FileReader(file))) {
 	            while((line = br.readLine()) != null){
-	                lines = Arrays.asList(line.split(delimiter));	                
+	            	lines.add(line);	                
 	            }
 	            
 	        } catch (Exception e){
 	            System.out.println(e);
 	        }
+	        
 	        return lines;
 	    }
-	   
 	  
+	   
 	
 }	
 

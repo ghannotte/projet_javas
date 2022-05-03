@@ -24,10 +24,12 @@ public class main {
 									
 			List imports = finder_class.imports("C:\\Users\\Larage\\Desktop\\");	
 			
+			
 			for (int i = 0; i < imports.size(); i++) {
-				String[] c =finder_class.split(imports.get(i));
-				 
-				db.insert(c);	
+				
+				String[] c= finder_class.split(imports.get(i));
+				
+				db.insert(c);
 				
 				
 			}
