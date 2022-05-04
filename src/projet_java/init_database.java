@@ -37,7 +37,9 @@ public class init_database {
 			      ) {
 			         
 			         String sql2 = "CREATE Table assure(Numero_Securite_Sociale int,Nom varchar(20), Prenom varchar(20), Date_Naissance date, Numero_Telephone varchar(13) , E_Mail varchar(20), ID_Remboursement int , Code_Soin int, Montant_Remboursement int)";
+			         String sql3 = "CREATE Table historic(ID_Remboursement int,Methode varchar(10), timestamp timestamp)";
 			         stmt.executeUpdate(sql2);
+			         stmt.executeUpdate(sql3);
 			         System.out.println("Table assure est crée");
 			      } catch (SQLException e) {
 			    	  
