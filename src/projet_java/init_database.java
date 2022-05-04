@@ -1,16 +1,20 @@
 package projet_java;
 
-import java.sql.*;
-import java.io.File;  
-import java.io.IOException;
-import java.io.FileWriter;
+import java.sql.*; 
+import java.util.*;
+import java.io.File;
+import java.io.*;
+import java.nio.*;
+import java.nio.file.Files;
+import java.util.regex.*;
+import java.nio.file.Path;
 
 public class init_database {
 	
 	static  String url = "jdbc:mysql://localhost:3306?serverTimezone=UTC&useSSL=false";
 	   static final String user = "root";
 	   static final String mdp = "root";
-
+	   
 	   
 	   public static void  Creatdb(String dbname) {
 		 
@@ -22,6 +26,8 @@ public class init_database {
 			         System.out.println("Database "+dbname+" est cree");
 			      } catch (SQLException e) {
 			    	  e.printStackTrace();
+			    	  
+			    	  
 			      } 
 		   
 		  String urls = "jdbc:mysql://localhost:3306"+"/"+dbname+"?serverTimezone=UTC&useSSL=false";
@@ -36,21 +42,13 @@ public class init_database {
 			      } catch (SQLException e) {
 			    	  
 			      }
-		   try {
-			      File myObj = new File("dbconfig.csv");
-			      if (myObj.createNewFile()) {
-			    	  FileWriter myWriter = new FileWriter("dbconfig.csv");
-			          myWriter.write(dbname+","+user+"," + mdp);
-			          myWriter.close();
-			 			        
-			      } else {
-			    	  FileWriter myWriter = new FileWriter("dbconfig.csv");
-			          myWriter.write(dbname+","+user+"," + mdp);
-			          myWriter.close();
-			      }
-			    } catch (IOException e) {
-			      
-			    }
+		   String[] log = new String[3];;
+		   log[0]=dbname;
+		   log[1]=user;
+		   log[2]=mdp;
+		   tool_file.write(log,"dbconfig.csv");
+		   tool_file.initdir();
+		  	   
       }
 		   
 	   

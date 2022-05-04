@@ -1,15 +1,13 @@
 package projet_java;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Pattern;
-import java.nio.charset.StandardCharsets;
+
+import java.util.*;
+import java.io.File;
+import java.io.*;
+import java.nio.*;
 import java.sql.*;
+ 
+
 public class db extends init_database implements import_all{
 	
 	
@@ -28,8 +26,10 @@ public class db extends init_database implements import_all{
 				         stmt.executeUpdate(query1.replaceAll("[\\[\\]]", ""));  	  
 				      } catch (SQLException e) {
 				    	  e.printStackTrace();
-				      } 
+				    	  tool_file.write(dbname,"rejet/rejet_"+dbname[9]+".csv");
+				    	   
 				   }
+				 
 				 	
-	 
+	 }
  }
